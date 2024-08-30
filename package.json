@@ -1,0 +1,38 @@
+{
+  "name": "literary-locations",
+  "version": "1.0.0",
+  "description": "A web application to discover books set in specific locations",
+  "main": "index.mjs",
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs",
+    "dev": "nodemon index.mjs",
+    "build": "npm run build:server && npm run build:client",
+    "build:server": "echo 'Add server build steps here'",
+    "build:client": "echo 'Add client build steps here'",
+    "db:init": "node scripts/initDb.mjs",
+    "test": "node --test test.mjs"
+  },
+  "keywords": [
+    "books",
+    "locations",
+    "maps",
+    "literature"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "sqlite": "^4.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "leaflet": "^1.9.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22",
+    "eslint": "^8.38.0",
+    "prettier": "^2.8.7"
+  }
+}
