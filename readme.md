@@ -4,10 +4,18 @@ LiteraryLocations is a web application that allows users to discover books set i
 
 ## Features
 
-- Interactive world map
+- Interactive world map with predefined locations
 - Click on locations to discover books set there
-- View book details and summaries
-- Search for specific locations or books
+- View book details and summaries in a sidebar
+
+## Prerequisites
+
+Before you begin, ensure you have met the following requirements:
+
+- Node.js (v14 or later) and npm installed
+- Git installed
+- A Google Maps API key
+- A Google Books API key
 
 ## Setup
 
@@ -22,81 +30,82 @@ LiteraryLocations is a web application that allows users to discover books set i
    npm install
    ```
 
-3. Set up environment variables (see Environment Variables section below)
+3. Set up environment variables:
+   Create a `.env` file in the root directory of the project and add the following variables:
 
-4. Initialize the database:
+   ```
+   PORT=3000
+   DB_PATH=./database.sqlite
+   GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+   GOOGLE_BOOKS_API_KEY=your_google_books_api_key_here
+   NODE_ENV=development
+   ```
+
+   Replace `your_google_maps_api_key_here` and `your_google_books_api_key_here` with your actual API keys.
+
+4. Obtain API Keys:
+
+   a. Google Maps API Key:
+      - Go to the [Google Cloud Console](https://console.cloud.google.com/)
+      - Create a new project or select an existing one
+      - Navigate to the "APIs & Services" dashboard
+      - Click on "Enable APIs and Services" and search for "Maps JavaScript API"
+      - Enable the Maps JavaScript API
+      - Go to the "Credentials" page
+      - Click "Create Credentials" and select "API Key"
+      - Copy the generated API key and paste it into your `.env` file as GOOGLE_MAPS_API_KEY
+
+   b. Google Books API Key:
+      - In the same Google Cloud Console project
+      - Navigate to the "APIs & Services" dashboard
+      - Click on "Enable APIs and Services" and search for "Books API"
+      - Enable the Books API
+      - Go to the "Credentials" page
+      - Click "Create Credentials" and select "API Key"
+      - Copy the generated API key and paste it into your `.env` file as GOOGLE_BOOKS_API_KEY
+
+5. Initialize the database:
    ```
    npm run db:init
    ```
 
-5. Start the development server:
+6. Build the React frontend:
+   ```
+   npm run build
+   ```
+
+## Running the Application
+
+1. Start the server:
+   ```
+   npm start
+   ```
+
+2. Open a web browser and navigate to `http://localhost:3000` (or the port specified in your .env file)
+
+## Development
+
+To run the application in development mode with hot reloading:
+
+1. Start the backend server:
    ```
    npm run dev
    ```
 
-## Environment Variables
+2. In a separate terminal, start the React development server:
+   ```
+   npm run start
+   ```
 
-Create a `.env` file in the root directory of the project and add the following variables:
-
-```
-PORT=3000
-DB_PATH=./database.sqlite
-GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
-BOOK_API_KEY=your_book_api_key_here
-NODE_ENV=development
-LOG_LEVEL=info
-JWT_SECRET=your_jwt_secret_here
-```
-
-Here's what each variable means and how to obtain it:
-
-- `PORT`: The port on which your server will run. 3000 is a common default.
-
-- `DB_PATH`: The path to your SQLite database file. You can keep the default `./database.sqlite` unless you want to store it elsewhere.
-
-- `GOOGLE_MAPS_API_KEY`: Required for using Google Maps in the frontend. 
-  - Obtain from: [Google Cloud Console](https://console.cloud.google.com/)
-  - Enable the Maps JavaScript API for your project
-  - Create credentials (API key) for Maps JavaScript API
-
-- `BOOK_API_KEY`: API key for fetching book data. The source depends on which book API you decide to use. Some options:
-  - [Google Books API](https://developers.google.com/books/docs/v1/using)
-  - [Open Library API](https://openlibrary.org/developers/api) (doesn't require an API key)
-  - [New York Times Books API](https://developer.nytimes.com/docs/books-product/1/overview)
-
-- `NODE_ENV`: Specifies the environment. Use `development` for local development, `production` for deployment.
-
-- `LOG_LEVEL`: Determines the verbosity of logging. Common values are `error`, `warn`, `info`, `debug`.
-
-- `JWT_SECRET`: A secret key for JSON Web Token encryption. Generate a strong, random string for this.
-
-Remember to never commit your `.env` file to version control. Add it to your `.gitignore` file to prevent accidental commits.
-
-## Scripts
-
-- `npm run dev`: Start the development server
-- `npm run build`: Build the production version
-- `npm start`: Start the production server
-- `npm run db:init`: Initialize the SQLite database
-- `npm test`: Run the test suite
+3. Open a web browser and navigate to `http://localhost:3000`
 
 ## Testing
 
-This project uses Node.js's built-in test runner and assertion library. To run the tests, use the following command:
+To run the test suite:
 
 ```
 npm test
 ```
-
-The tests cover core functionality including database operations and API endpoints. If you add new features or modify existing ones, please update or add tests accordingly.
-
-## Technologies Used
-
-- Node.js
-- Express.js
-- SQLite
-- React
-- Leaflet.js
 
 ## Contributing
 
@@ -105,3 +114,14 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
+
+## Troubleshooting
+
+If you encounter any issues while setting up or running the application, please check the following:
+
+1. Ensure all dependencies are installed by running `npm install` again.
+2. Verify that your `.env` file contains all the required variables with correct values.
+3. Make sure your API keys are valid and have the necessary permissions enabled.
+4. Check the console output for any error messages that might provide more information about the issue.
+
+If you're still having problems, please open an issue on the GitHub repository with a detailed description of the error and the steps to reproduce it.

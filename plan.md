@@ -84,9 +84,7 @@ There are some open API, but they lack search by description. Perhaps we can sea
 
 ## Database
 
-We'll need a database that supports Geographical data.
-
-- Supabase supports this: https://supabase.com/docs/guides/database/extensions/postgis
+We'll use sqlite for this project and
 
 ## Map Options
 
@@ -114,39 +112,3 @@ Do we introduce some sort of (deterministic based on title/isb/etc.) jittering?
 Do we place them in a radial pattern?
 
 ## Other Explorations
-
-### Google Books API
-
-Could we use the [Google Books API](https://developers.google.com/books) to read through the content
-of a books and find locations?
-
-```javascript
-const locations = extractLocationsFromBook(book);
-for (const location of locations) {
-  createNewLocation(coordinate);
-}
-```
-
-In addition, we would not need a defined set of location from the start, and can use the
-https://developers.google.com/maps/documentation/geocoding/overview to identify locations.
-
-#### Pros
-
-- Cheap(er)
-- More thorough
-
-#### Cons
-
-- Expensive - more time and processing power
-
-### [Vector] Indexing
-
-We obtain:
-
-- a list of keywords associated with a location (including surrounding locations, visible descriptions, landmarks, etc. )
-
-- a list of keywords (that may or may not include location) associated with a book.
-  - This could be from an existing index or generated from AI
-
-We match a location against a book and and return a score. We could even interpret this score as a radial distance from the the location.
-This might mitigate the need for a geo-spatial database.

@@ -7,11 +7,12 @@
   "scripts": {
     "start": "node index.mjs",
     "dev": "nodemon index.mjs",
-    "build": "npm run build:server && npm run build:client",
+    "build": "react-scripts build",
     "build:server": "echo 'Add server build steps here'",
-    "build:client": "echo 'Add client build steps here'",
+    "build:client": "react-scripts build",
     "db:init": "node scripts/initDb.mjs",
-    "test": "node --test test.mjs"
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "keywords": [
     "books",
@@ -28,11 +29,27 @@
     "sqlite": "^4.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "leaflet": "^1.9.3"
+    "leaflet": "^1.9.3",
+    "jsonwebtoken": "^9.0.0",
+    "cors": "^2.8.5",
+    "morgan": "^1.10.0"
   },
   "devDependencies": {
     "nodemon": "^2.0.22",
     "eslint": "^8.38.0",
-    "prettier": "^2.8.7"
+    "prettier": "^2.8.7",
+    "react-scripts": "5.0.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
